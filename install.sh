@@ -10,7 +10,8 @@ PermanentPreRequisites="git ruby-full rubygems python-apt python-pip python-dev 
 
 install_prereq() {
     echo "Installing Prerequisites... "
-    apt-get install $TempPreRequisites $PermanentPreRequisites --no-install-recommends -y
+    apt-get install $TempPreRequisites  --no-install-recommends -y
+    apt-get install $PermanentPreRequisites  --no-install-recommends -y
     echo "done"
 }
 
@@ -39,7 +40,7 @@ do_cleanup() {
 }
 
 do_APT(){
-    apt-get update
+    apt-get update 
     apt-get upgrade -y
 }
 

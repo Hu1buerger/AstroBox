@@ -1,19 +1,11 @@
 FROM ubuntu as builder
 LABEL Name=astrobox Version=0.0.1 Maintainer="Vincent Modrow"
 
-ENV ASTROBOX_VERSION=0.16.2
-# Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+#ENV ASTROBOX_VERSION=0.16.2
 
 COPY ./install.sh /tmp/install.sh
 
-#Split for reusing of layers
-RUN sh /tmp/install.sh do_APT
-RUN sh /tmp/install.sh install_prereq
-RUN sh /tmp/install.sh downloadAndInstallAstroBox
-RUN sh /tmp/install.sh install_frameworks
-RUN sh /tmp/install.sh do_cleanup
-
+RUN sh /tmp/install.sh
 
 # Define working directory.
 WORKDIR /astrobox/
