@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -f /boot/.astrobox/mf.deb ];then
+  dpkg -i /boot/.astrobox/mf.deb
+  rm /boot/.astrobox/mf.deb
+fi

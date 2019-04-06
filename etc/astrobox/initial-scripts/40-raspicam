@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ENABLE_RASPICAM=n
+
+if [ -f /boot/.astrobox/astrobox-config.conf ]; then
+  . /boot/.astrobox/astrobox-config.conf
+else
+  echo "AstroBox Config file not present"
+fi
+
+if [ $ENABLE_RASPICAM = 'y' ]; then
+  raspi-config nonint do_camera 0
+  echo "Raspicam Enabled!"
+fi
