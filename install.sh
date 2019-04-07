@@ -24,13 +24,23 @@ install_frameworks() {
 }
 
 downloadAndInstallAstroBox() {
-    echo "Download AstroBox from $(DownloadURL) ..."
+    echo "Download AstroBox from $DownloadURL ..."
     cd /tmp/
+
+    if [ -e Astro*]; 
+    then rm -rf Astro* 
+    fi
+    
+    if [ -e master.zip* ]; 
+    then rm master.zip*  
+    fi
+
     wget $DownloadURL
     unzip master.zip
-    cd AstroBox-master
-    mv -f ./etc/astrobox /etc/astrobox
-    mv -f ./src/ /astrobox/
+    mv -f ./AstroBox-master/etc/astrobox /etc/astrobox
+    mv -f ./AstroBox-master/src/ /astrobox/
+    mv -f ./AstroBox-master/run /astrobox/
+    mv -f ./AstroBox-master/set-initial-hostname /astrobox/
     echo "done"
 }
 
@@ -40,8 +50,10 @@ do_cleanup() {
 }
 
 do_APT(){
+    echo "Update/Upgrade of APT..."
     apt-get update 
-    apt-get upgrade -y
+    #apt-get upgrade -y
+    echo "done"
 }
 
 do_install() {

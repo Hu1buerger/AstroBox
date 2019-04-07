@@ -5,13 +5,14 @@ LABEL Name=astrobox Version=0.0.1 Maintainer="Vincent Modrow"
 
 COPY ./install.sh /tmp/install.sh
 
-RUN sh /tmp/install.sh
+RUN chmod +x /tmp/install.sh
+RUN ./tmp/install.sh
 
 # Define working directory.
 WORKDIR /astrobox/
 
-RUN apt-get install -y --no-install-recommends python-opencv
-RUN apt-get install -y --no-install-recommends python-gobject
+#RUN apt-get install -y --no-install-recommends python-opencv
+#RUN apt-get install -y --no-install-recommends python-gobject
 #RUN apt-get install -y --no-install-recommends python-dbus
 
 #VOLUME ["/etc/astrobox"]
